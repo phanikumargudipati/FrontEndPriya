@@ -1,0 +1,65 @@
+HTML-->static web pages
+
+
+
+CSS(cascading style sheet):
+==========================
+
+** To apply the styles html tags
+
+
+
+3.x
+
+
+syntax:
+--------
+selector{property1:value,property2:value2..etc}
+
+<h1>welcome to html</h1>
+how to apply css to html tags?
+
+
+
+we have 3 ways 
+
+1)inline css-->
+	<h1 style="color:red;align:center">welcome to html</h1>
+	<h1>welcome to css</h1>
+2)internal css
+
+one.html
+	<head>
+	<style>
+		h1{
+		bgcolor:red,
+		color:white
+		}
+	</style>
+	</head>
+
+	<h1>welcome to html</h1>
+	<h1>welcome to css</h1>
+
+3)external  css
+
+		.css
+		
+		
+		<h1>sa</h1>
+		selector:
+		---------
+		1)element selector
+		2)group selector
+		3)id selector
+		4)class selector
+		5)all selector
+
+
+
+
+
+
+
+
+

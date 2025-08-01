@@ -1,0 +1,77 @@
+<div class="container">
+  <h3>Add Employee</h3>
+  <form [formGroup]="empForm" (ngSubmit)="addEmployee()">
+    <div class="form-group">
+      <label>Emp Code:</label>
+      <input formControlName="empcode" class="form-control" />
+      <div *ngIf="empForm.get('empcode')?.touched && empForm.get('empcode')?.invalid" class="text-danger">
+        Required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Name:</label>
+      <input formControlName="name" class="form-control" />
+      <div *ngIf="empForm.get('name')?.touched && empForm.get('name')?.invalid" class="text-danger">
+        Required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>DOB:</label>
+      <input type="date" formControlName="dateOfBirth" class="form-control" />
+      <div *ngIf="empForm.get('dateOfBirth')?.touched && empForm.get('dateOfBirth')?.invalid" class="text-danger">
+        Required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Gender:</label>
+      <select formControlName="gender" class="form-control">
+        <option value="" disabled>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div *ngIf="empForm.get('gender')?.touched && empForm.get('gender')?.invalid" class="text-danger">
+        Required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Salary:</label>
+      <input formControlName="sal" class="form-control" />
+      <div *ngIf="empForm.get('sal')?.touched && empForm.get('sal')?.invalid" class="text-danger">
+        Must be a valid number
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Add Employee</button>
+  </form>
+
+  <hr />
+
+  <h3>Employee List</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>EmpId</th>
+        <th>EmpName</th>
+        <th>DOB</th>
+        <th>Gender</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of emps">
+        <td>{{ emp.empcode }}</td>
+        <td>{{ emp.name | gender: emp.gender }}</td>
+        <td>{{ emp.dateOfBirth }}</td>
+        <td>{{ emp.gender }}</td>
+        <td>{{ emp.sal | currency }}</td>
+      </tr>
+      <tr *ngIf="emps.length === 0">
+        <td colspan="5">No employees data</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

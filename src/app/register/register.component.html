@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Registration Form</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input id="username" type="text" class="form-control" formControlName="username" />
+      <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid" class="text-danger">
+        Username is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" type="password" class="form-control" formControlName="password" />
+      <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="text-danger">
+        <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Minimum 6 characters.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input id="confirmPassword" type="password" class="form-control" formControlName="confirmPassword" />
+      <div *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched" class="text-danger">
+        Passwords do not match.
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+</div>
